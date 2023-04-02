@@ -56,9 +56,10 @@ public class Main {
 
             int previousValueOfTheSum = totalValueOfTheSum;
             numberToAddToTheValue = enterInteger();
+
             if (numberToAddToTheValue == -1000) break;
+
             totalValueOfTheSum = addingIntegers(previousValueOfTheSum, numberToAddToTheValue);
-            System.out.println("The total of " + previousValueOfTheSum + " and " + numberToAddToTheValue + " is " + totalValueOfTheSum);
         }
 
         //Task 1d
@@ -70,32 +71,19 @@ public class Main {
         boolean runArray1d = true;
 
         while (runArray1d) {
-
             int previousValueOfTheSum = totalValue;
             operationToPerform = enterOperation();
 
             if (operationToPerform.equals("="))
                 break; //Adding this as I have offered this operation in function I used for next tasks
 
-            numberForOperation = enterInteger();
-
-            if (operationToPerform.equals("+")) {
-                totalValue = addingIntegers(previousValueOfTheSum, numberForOperation);
-            } else if (operationToPerform.equals("-")) {
-                totalValue = subtractingIntegers(previousValueOfTheSum, numberForOperation);
-            } else if (operationToPerform.equals("*")) {
-                totalValue = multiplyingIntegers(previousValueOfTheSum, numberForOperation);
-            } else if (operationToPerform.equals("/")) {
-                totalValue = divisioningIntegers(previousValueOfTheSum, numberForOperation);
-            }
-            System.out.println("The total of " + previousValueOfTheSum + " and " + numberForOperation + " is " + totalValue);
+            totalValue = operationRecognizer(operationToPerform, previousValueOfTheSum);
         }
 
         //Task 1e
         System.out.println("You are on task 1e \n");
 
         int totalValuePlus = 0;
-        int numberForOperationPlus;
         String operationToPerformPlus;
         boolean runArray1e = true;
 
@@ -106,51 +94,19 @@ public class Main {
             if (operationToPerformPlus.equals("="))
                 break; //Adding this as I have offered this operation in function I used for next tasks
 
-            numberForOperationPlus = enterInteger();
-
-            if (operationToPerformPlus.equals("+")) {
-                totalValuePlus = addingIntegers(previousValueOfTheSum, numberForOperationPlus);
-                System.out.println("The sum of " + previousValueOfTheSum + " and " + numberForOperationPlus + " is " + totalValuePlus);
-            } else if (operationToPerformPlus.equals("-")) {
-                totalValuePlus = subtractingIntegers(previousValueOfTheSum, numberForOperationPlus);
-                System.out.println("The difference of " + previousValueOfTheSum + " and " + numberForOperationPlus + " is " + totalValuePlus);
-            } else if (operationToPerformPlus.equals("*")) {
-                totalValuePlus = multiplyingIntegers(previousValueOfTheSum, numberForOperationPlus);
-                System.out.println("The product of " + previousValueOfTheSum + " and " + numberForOperationPlus + " is " + totalValuePlus);
-            } else if (operationToPerformPlus.equals("/")) {
-                totalValuePlus = divisioningIntegers(previousValueOfTheSum, numberForOperationPlus);
-                System.out.println("The quotient of " + previousValueOfTheSum + " and " + numberForOperationPlus + " is " + totalValuePlus);
-            }
+            totalValuePlus = operationRecognizer(operationToPerformPlus, previousValueOfTheSum);
         }
 
         //Task 1f
         System.out.println("You are on task 1f \n");
 
         int totalValueAdvanced = 0;
-        int numberForOperationAdvanced;
         String operationToPerformAdvanced;
 
         do {
             int previousValueOfTheSum = totalValueAdvanced;
             operationToPerformAdvanced = enterOperation();
-
-            if (operationToPerformAdvanced.equals("+")) {
-                numberForOperationAdvanced = enterInteger();
-                totalValueAdvanced = addingIntegers(previousValueOfTheSum, numberForOperationAdvanced);
-                System.out.println("The sum of " + previousValueOfTheSum + " and " + numberForOperationAdvanced + " is " + totalValueAdvanced);
-            } else if (operationToPerformAdvanced.equals("-")) {
-                numberForOperationAdvanced = enterInteger();
-                totalValueAdvanced = subtractingIntegers(previousValueOfTheSum, numberForOperationAdvanced);
-                System.out.println("The difference of " + previousValueOfTheSum + " and " + numberForOperationAdvanced + " is " + totalValueAdvanced);
-            } else if (operationToPerformAdvanced.equals("*")) {
-                numberForOperationAdvanced = enterInteger();
-                totalValueAdvanced = multiplyingIntegers(previousValueOfTheSum, numberForOperationAdvanced);
-                System.out.println("The product of " + previousValueOfTheSum + " and " + numberForOperationAdvanced + " is " + totalValueAdvanced);
-            } else if (operationToPerformAdvanced.equals("/")) {
-                numberForOperationAdvanced = enterInteger();
-                totalValueAdvanced = divisioningIntegers(previousValueOfTheSum, numberForOperationAdvanced);
-                System.out.println("The quotient of " + previousValueOfTheSum + " and " + numberForOperationAdvanced + " is " + totalValueAdvanced);
-            }
+            totalValueAdvanced = operationRecognizer(operationToPerformAdvanced, previousValueOfTheSum);
 
         } while (!operationToPerformAdvanced.equals("="));
         {
@@ -179,27 +135,8 @@ public class Main {
 
         do {
             int previousValueOfTheSum = totalValueBonus;
-            System.out.println("Which operation would you like to use: *,/,+,-,=?");
-            operationToPerformBonus = scanner.next();
-
-            if (operationToPerformBonus.equals("+")) {
-                numberForOperationBonus = enterInteger();
-                totalValueBonus = addingIntegers(previousValueOfTheSum, numberForOperationBonus);
-                System.out.println("The sum of " + previousValueOfTheSum + " and " + numberForOperationBonus + " is " + totalValueBonus);
-            } else if (operationToPerformBonus.equals("-")) {
-                numberForOperationBonus = enterInteger();
-                totalValueBonus = subtractingIntegers(previousValueOfTheSum, numberForOperationBonus);
-                System.out.println("The difference of " + previousValueOfTheSum + " and " + numberForOperationBonus + " is " + totalValueBonus);
-            } else if (operationToPerformBonus.equals("*")) {
-                numberForOperationBonus = enterInteger();
-                totalValueBonus = multiplyingIntegers(previousValueOfTheSum, numberForOperationBonus);
-                System.out.println("The product of " + previousValueOfTheSum + " and " + numberForOperationBonus + " is " + totalValueBonus);
-            } else if (operationToPerformBonus.equals("/")) {
-                numberForOperationBonus = enterInteger();
-                totalValueBonus = divisioningIntegers(previousValueOfTheSum, totalValueBonus);
-                System.out.println("The quotient of " + previousValueOfTheSum + " and " + numberForOperationBonus + " is " + totalValueBonus);
-            }
-
+            operationToPerformBonus = enterOperation();
+            totalValueBonus = operationRecognizer(operationToPerformBonus, previousValueOfTheSum);
         } while (!operationToPerformBonus.equals("="));
         {
             System.out.println("Calculator result is " + totalValueBonus + " .");
@@ -219,7 +156,6 @@ public class Main {
                 arrayOfNumbers[i] = addNumberToArray;
                 index = index + 1;
             }
-
             if (addNumberToArray == -10) {
                 for (int j = 0; j < index; j++) {
                     System.out.println(arrayOfNumbers[j]);
@@ -251,21 +187,25 @@ public class Main {
 
     public static int addingIntegers(int firstNumber, int secondNumber) {
         int result = firstNumber + secondNumber;
+        System.out.println("The sum of " + firstNumber + " and " + secondNumber + " is " + result);
         return result;
     }
 
     public static int subtractingIntegers(int firstNumber, int secondNumber) {
         int result = firstNumber - secondNumber;
+        System.out.println("The difference of " + firstNumber + " and " + secondNumber + " is " + result);
         return result;
     }
 
     public static int multiplyingIntegers(int firstNumber, int secondNumber) {
         int result = firstNumber * secondNumber;
+        System.out.println("The product of " + firstNumber + " and " + secondNumber + " is " + result);
         return result;
     }
 
     public static int divisioningIntegers(int firstNumber, int secondNumber) {
         int result = firstNumber / secondNumber;
+        System.out.println("The quotient of " + firstNumber + " and " + secondNumber + " is " + result);
         return result;
     }
 
@@ -342,5 +282,24 @@ public class Main {
             System.out.println(filteredArray[i]);
         }
         return filteredArray;
+    }
+
+    public static int operationRecognizer(String sign, int initialInteger) {
+        if (sign.equals("=")) {
+            return initialInteger;
+        } else {
+            int numberForOperations = enterInteger();
+            int result = initialInteger;
+            if (sign.equals("+")) {
+                result = addingIntegers(initialInteger, numberForOperations);
+            } else if (sign.equals("-")) {
+                result = subtractingIntegers(initialInteger, numberForOperations);
+            } else if (sign.equals("*")) {
+                result = multiplyingIntegers(initialInteger, numberForOperations);
+            } else if (sign.equals("/")) {
+                result = divisioningIntegers(initialInteger, numberForOperations);
+            }
+            return result;
+        }
     }
 }
